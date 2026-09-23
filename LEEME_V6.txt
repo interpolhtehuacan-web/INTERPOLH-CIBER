@@ -1,0 +1,14 @@
+INTERPOLH CIBER V6
+
+NUEVO:
+- Escáner de códigos con cámara en Altas y Ventas (cuando el navegador soporta BarcodeDetector).
+- Entrada manual y lector USB siguen funcionando.
+- Alarma sonora y aviso visual al terminar un tiempo preestablecido.
+- Clientes / Crédito con alta de clientes, cargos, abonos, saldo e historial.
+- Conserva fotografía de productos de V5.
+
+IMPORTANTE:
+- Sigue siendo una versión LOCAL. Los datos se guardan en el navegador.
+- La cámara funciona mejor al publicar el sistema bajo HTTPS o en localhost y requiere permiso de cámara.
+- En navegadores sin BarcodeDetector se puede seguir usando código manual o lector USB.
+- Firebase/nube será la siguiente etapa.

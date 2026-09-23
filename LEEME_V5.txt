@@ -1,0 +1,17 @@
+INTERPOLH CIBER V5 - IMÁGENES DE PRODUCTOS
+
+NUEVO
+- En Productos / Altas puedes seleccionar una imagen desde la computadora.
+- En celular/tablet compatible, el mismo control puede ofrecer abrir la cámara trasera.
+- La imagen se recorta al centro en formato cuadrado y se reduce automáticamente a 800 x 800 px.
+- La fotografía aparece en Inventario y en Venta de papelería.
+- Al editar un producto se conserva su fotografía y puedes reemplazarla o quitarla.
+
+IMPORTANTE SOBRE ESTA VERSIÓN
+- Esta V5 conserva el almacenamiento local de V4 para poder probar la captura de imágenes sin configurar aún una cuenta de nube.
+- Las imágenes se guardan temporalmente en el navegador junto con los productos. No conviene capturar un catálogo grande así porque localStorage tiene poco espacio.
+- Para que PC, celular y tablet compartan productos, ventas e imágenes, la siguiente conexión debe usar Firestore para datos y Firebase Storage para fotografías.
+- No reutilices las credenciales de Juquilita: es recomendable crear un proyecto Firebase independiente para INTERPOLH CIBER.
+
+SIGUIENTE PASO PARA NUBE
+Crear el proyecto Firebase del Ciber y proporcionar su configuración web. Con ella se puede conectar: Authentication + Firestore + Storage, publicar la web y generar el QR.
