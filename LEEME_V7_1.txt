@@ -1,0 +1,7 @@
+INTERPOLH CIBER V7.1 - CORRECCIÓN DE CUENTAS ABIERTAS
+
+- Los productos de Papelería agregados a una Cuenta abierta ya NO descuentan stock en ese momento.
+- Al COBRAR la Cuenta abierta, el sistema verifica existencias y descuenta automáticamente las cantidades vendidas.
+- Si la cuenta se cancela o se elimina el movimiento antes de cobrar, el inventario no cambia.
+- La venta cobrada sigue apareciendo en Ventas del día y en el Corte de caja, separando Papelería, Ciber y Extras.
+- Se conserva la función de fotografía y fondo blanco de V7.

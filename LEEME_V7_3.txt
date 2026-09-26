@@ -1,0 +1,7 @@
+INTERPOLH CIBER V7.3 — CORRECCIÓN DETALLE DE CRÉDITO
+
+- Corrige el botón 👁️ Ver detalle / 🙈 Ocultar detalle.
+- El historial de cada cliente permanece oculto por defecto.
+- Solo se despliega el cliente seleccionado.
+- Funciona también al abrir index.html localmente (file://).
+- Conserva V7.2: cuentas abiertas, stock automático, fondo blanco e intento de compatibilidad iOS.

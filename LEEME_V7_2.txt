@@ -1,0 +1,5 @@
+INTERPOLH CIBER V7.2
+- Privacidad en Clientes/Crédito: historial, teléfono y nota ocultos por defecto; botón ojo para ver/ocultar un solo cliente.
+- Escáner compatible con iPhone/iPad: usa BarcodeDetector cuando existe y un lector ZXing alternativo en Safari/iOS.
+- Conserva V7.1: cuentas abiertas, descuento automático de stock al cobrar y limpieza de fondo blanco.
+NOTA iOS: publicar bajo HTTPS y permitir Cámara. El lector alternativo carga su módulo desde jsDelivr, por lo que requiere Internet.

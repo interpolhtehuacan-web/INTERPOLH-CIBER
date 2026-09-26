@@ -1,0 +1,14 @@
+INTERPOLH CIBER - VERSION 7 DE PRUEBA
+
+NOVEDADES
+- Cuentas abiertas: permite juntar papelería, impresiones/copias y renta de equipo antes de cobrar.
+- Varias cuentas abiertas simultáneamente.
+- Desde Venta de papelería: botón "Agregar a cuenta abierta".
+- Desde Finalizar equipo: botón "Agregar a cuenta abierta y liberar".
+- En Cuentas abiertas: agregar impresiones/servicios, quitar movimientos, cobrar o cancelar.
+- Corte de caja conserva el desglose de Ciber, Extras y Papelería aunque se cobren juntos.
+- Foto de producto: botón "Quitar fondo / blanco" (beta) sobre imagen 800x800. Funciona mejor con fondo liso y buena iluminación.
+
+IMPORTANTE
+- Los datos siguen guardándose en localStorage del navegador. Firebase aún no está conectado.
+- La eliminación de fondo es local y aproximada; revisar siempre la vista previa.

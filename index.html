@@ -1,173 +1,19 @@
-<!doctype html>
-<html lang="es">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="ESPARTANOS Proteger y Servir — soluciones de protección, seguridad, cámaras y equipo táctico en Tehuacán, Puebla.">
-<title>ESPARTANOS | Proteger y Servir</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>INTERPOLH | Control de Ciber y Papelería</title><link rel="stylesheet" href="styles.css"></head><body>
+<header class="hero"><div class="brand"><img src="assets/logo-ciber.jpg" alt="Soluciones Informáticas INTERPOLH"><div class="brandtext"><b>Soluciones Informáticas INTERPOLH</b><span>La atención y el profesionalismo nos Distingue</span></div></div><div class="clockbox"><strong id="clockTime">--:--:--</strong><span id="clockDate">--</span><small>💾 Modo local · respaldo recomendado</small></div></header>
+<nav><button data-view="ciber" class="active">🖥️ Ciber</button><button data-view="rapida">🧮 Cuenta rápida</button><button data-view="papeleria">📦 Productos / Altas</button><button data-view="ventas">🛒 Venta de papelería</button><button data-view="cuentas">🧾 Cuentas abiertas</button><button data-view="clientes">👥 Clientes / Crédito</button><button data-view="historial">💰 Ventas de hoy</button><button data-view="corte">📊 Corte de caja</button></nav>
+<main><section id="ciber" class="view active"><div class="titleline"><div><h1>Control de equipos</h1><p>Tarifa: $4.00 por cada fracción de 30 minutos.</p></div><div class="today"><b>HOY</b><span id="todayBusy">0 equipos ocupados</span><span id="todaySales">$0.00 vendidos</span><span id="todayLow">0 productos bajos</span></div></div><div id="pcs" class="grid"></div></section>
+<section id="rapida" class="view"><h1>Cuenta rápida</h1><div class="quick"><label>Nombre del cliente<input id="quickClient" placeholder="Público general"></label><p>Agrega importes y el sistema los suma automáticamente.</p><div id="quickRows"></div><button id="addRow">+ Agregar importe</button><div class="total">TOTAL: <strong id="quickTotal">$0.00</strong><small id="quickWords"></small></div><button id="chargeQuick" class="primary">Cobrar cuenta</button><button id="clearQuick">Nueva cuenta</button></div></section>
+<section id="papeleria" class="view"><h1>Productos / Altas</h1><p class="hint">Aquí puedes agregar, modificar o eliminar productos. Los productos que ya tenías se conservan.</p><div class="inventoryLayout"><form id="productForm" class="panel"><h2 id="productFormTitle">Alta de producto</h2><input type="hidden" id="pId"><label>Código de barras / QR</label><div class="scanRow"><input id="pCode" autocomplete="off" placeholder="Escanea o escribe el código"><button type="button" id="scanProductCode" class="primary">📷 Escanear</button></div><label>Producto<input id="pName" required placeholder="Ej. Folder tamaño carta"></label><label>Departamento<select id="pDept"><option>Papelería</option><option>Impresiones y copias</option><option>Accesorios</option><option>Regalos</option><option>Escolar</option><option>Oficina</option><option>Otros</option></select></label><label>Características<input id="pDesc" placeholder="Color, marca, presentación..."></label><div class="imageCaptureBox"><label>Imagen del producto<input id="pImage" type="file" accept="image/*" capture="environment"></label><div class="imageHelp">📁 En computadora permite examinar archivos. 📷 En celular compatible permite usar la cámara.</div><div class="imagePreviewWrap"><img id="pImagePreview" alt="Vista previa del producto"><span id="pImageEmpty">Sin imagen</span></div><div class="photoActions"><button type="button" id="whiteBgProductImage">✂️ Quitar fondo / blanco</button><button type="button" id="removeProductImage" class="danger">Quitar imagen</button></div><small class="hint">La limpieza automática funciona mejor con un fondo liso y buena iluminación. Revisa la vista previa antes de guardar.</small></div><div class="two"><label>Precio compra<input id="pBuy" type="number" min="0" step="0.01"></label><label>Precio venta<input id="pSell" type="number" min="0" step="0.01" required></label><label>Existencia<input id="pStock" type="number" min="0" step="1" required></label><label>Stock mínimo<input id="pMin" type="number" min="0" step="1" value="3" required></label></div><div class="formActions"><button class="primary" type="submit" id="saveProduct">Guardar producto</button><button type="button" id="cancelProductEdit" class="hiddenBtn">Cancelar edición</button></div></form><div class="panel"><h2>Inventario</h2><input id="productSearch" placeholder="Buscar por código, nombre o departamento"><div id="products"></div></div></div></section>
+<section id="ventas" class="view"><h1>Venta de papelería</h1><div class="posLayout"><div class="panel"><h2>Buscar producto</h2><div class="scanRow"><input id="saleSearch" autocomplete="off" placeholder="Escanea código o busca por nombre"><button type="button" id="scanSaleCode" class="primary">📷 Escanear</button></div><div id="saleProducts"></div></div><div class="panel"><h2>Carrito</h2><label>Cliente<input id="saleClient" placeholder="Público general"></label><div id="cart"></div><div class="total">TOTAL: <strong id="cartTotal">$0.00</strong><small id="cartWords"></small></div><button id="chargeCart" class="primary">Cobrar venta</button><button id="cartToAccount">🧾 Agregar a cuenta abierta</button><button id="clearCart">Vaciar carrito</button></div></div></section>
+<section id="cuentas" class="view"><h1>Cuentas abiertas</h1><p class="hint">Junta papelería, impresiones/copias y renta de equipo en una sola cuenta y cobra al final.</p><div class="openAccountLayout"><form id="openAccountForm" class="panel"><h2>Nueva cuenta</h2><label>Nombre / referencia<input id="openAccountName" placeholder="Ej. Juan, Mostrador 1"></label><button class="primary" type="submit">Abrir cuenta</button></form><div class="panel"><h2>Cuentas activas</h2><div id="openAccounts"></div></div></div></section>
+<section id="clientes" class="view"><h1>Clientes / Crédito</h1><p class="hint">Registra clientes a quienes das crédito. Cada cargo y abono conserva fecha, concepto e importe.</p><div class="creditLayout"><form id="clientForm" class="panel"><h2>Alta de cliente</h2><input type="hidden" id="clientId"><label>Nombre *<input id="clientName" required placeholder="Nombre del cliente"></label><label>Teléfono<input id="clientPhone" placeholder="Opcional"></label><label>Nota<input id="clientNote" placeholder="Ej. Cliente frecuente"></label><div class="formActions"><button class="primary" type="submit">Guardar cliente</button><button type="button" id="cancelClientEdit" class="hiddenBtn">Cancelar</button></div></form><div class="panel"><h2>Cuentas de crédito</h2><input id="clientSearch" placeholder="Buscar cliente"><div id="clients"></div></div></div></section>
+<section id="historial" class="view"><h1>Ventas de hoy</h1><div id="sales"></div><div class="total">Total vendido: <strong id="salesTotal">$0.00</strong></div></section>
+<section id="corte" class="view"><h1>Corte de caja</h1><div class="cards"><div><span>Ciber</span><strong id="cutCiber">$0.00</strong></div><div><span>Cargos adicionales</span><strong id="cutExtras">$0.00</strong></div><div><span>Cuenta rápida</span><strong id="cutQuick">$0.00</strong></div><div><span>Papelería</span><strong id="cutPaper">$0.00</strong></div><div><span>Total</span><strong id="cutTotal">$0.00</strong></div></div></section></main>
+<div id="timerModal" class="modal hidden"><div class="dialog"><h2 id="timerTitle">Iniciar equipo</h2><p>¿Cómo desea medir el tiempo?</p><div class="timerChoices"><button id="freeTime" class="primary">▶ Tiempo libre</button><button class="preset" data-min="30">30 min</button><button class="preset" data-min="60">1 hora</button><button class="preset" data-min="90">1 h 30</button><button class="preset" data-min="120">2 horas</button><button class="preset" data-min="180">3 horas</button><button class="preset" data-min="240">4 horas</button></div><label>Tiempo personalizado (minutos)<input id="customMinutes" type="number" min="1" placeholder="Ej. 75"></label><button id="customStart">Iniciar personalizado</button><button id="timerCancel">Cancelar</button></div></div>
+<div id="modal" class="modal hidden"><div class="dialog checkout"><h2 id="modalTitle">Finalizar</h2><p id="modalInfo"></p><label>Nombre del cliente<input id="modalClient" placeholder="Público general"></label><h3>Cuenta rápida del equipo</h3><p class="hint">Agrega impresiones, copias u otros subtotales antes de cobrar.</p><div id="modalRows"></div><button id="modalAddRow">+ Agregar importe</button><div class="summary"><span>Tiempo de equipo <b id="modalBase">$0.00</b></span><span>Extras agregados <b id="modalExtras">$0.00</b></span></div><div class="total">TOTAL A COBRAR: <strong id="modalTotal"></strong><small id="modalWords"></small></div><div class="cash"><label>Efectivo recibido<input id="cashReceived" type="number" min="0" step="0.50" placeholder="$0.00"></label><div>CAMBIO <strong id="changeDue">$0.00</strong></div></div><button id="confirm" class="primary">Cobrar y liberar equipo</button><button id="pcToAccount">🧾 Agregar a cuenta abierta y liberar</button><button id="cancel">Cancelar</button></div></div>
 
-
-<link rel="stylesheet" href="styles.css">
-
-</head>
-<body>
-<header class="site-header">
-  <a class="brand" href="#inicio"><span class="brand-mark">E</span><span>ESPARTANOS<small>PROTEGER Y SERVIR</small></span></a>
-  <button class="menu-toggle" aria-label="Abrir menú">☰</button>
-  <nav id="nav">
-    <a href="#inicio">Inicio</a>
-    <a href="#nosotros">Quiénes somos</a>
-    <a href="#seguridad">Seguridad</a>
-    <a href="#camaras">Cámaras</a>
-    <a href="#tactico">Equipo táctico</a>
-    <a href="#contacto" class="nav-cta">Contacto</a>
-  </nav>
-</header>
-
-<main>
-<section id="inicio" class="hero">
-  <div class="hero-overlay"></div>
-  <div class="hero-content">
-    <p class="eyebrow">PROTECCIÓN • SEGURIDAD • EQUIPAMIENTO</p>
-    <h1>ESPARTANOS<br><span>Proteger y Servir</span></h1>
-    <p>Equipo de alta calidad para tu seguridad. Protección confiable para las situaciones más críticas.</p>
-    <div class="hero-actions">
-      <a class="btn btn-primary" href="#tactico">Ver equipo</a>
-      <a class="btn btn-ghost" href="#contacto">Solicitar información</a>
-    </div>
-  </div>
-  <div class="hero-badge">TEHUACÁN<br><strong>PUEBLA</strong></div>
-</section>
-
-<section id="nosotros" class="section split">
-  <div>
-    <p class="eyebrow">ESPARTANOS</p>
-    <h2>Protección que inspira confianza.</h2>
-    <p>Empresa mexicana especializada en brindar soluciones integrales de protección y en la comercialización de equipamiento táctico de alta resistencia para corporaciones de seguridad pública, privada y fuerzas del orden.</p>
-    <div class="accent-line"></div>
-    <h3>Misión</h3>
-    <p>Proporcionar equipos de seguridad confiables y de calidad. Nos dedicamos a la fabricación de uniformes que cumplen con los más altos estándares para las fuerzas de seguridad pública y privada.</p>
-  </div>
-  <div class="feature-card">
-    <span class="feature-number">01</span>
-    <h3>Calidad</h3>
-    <p>Equipamiento orientado a la protección, resistencia y eficiencia.</p>
-  </div>
-</section>
-
-<section id="seguridad" class="section dark-section">
-  <div class="section-heading">
-    <p class="eyebrow">SERVICIOS</p>
-    <h2>Seguridad privada</h2>
-    <p>Servicios profesionales para proteger personas, bienes, edificios e información, de forma complementaria a la seguridad pública.</p>
-  </div>
-  <div class="cards">
-    <article class="card"><div class="icon">◈</div><h3>Vigilancia física</h3><p>Control de accesos, guardias en puertas y rondas de inspección.</p></article>
-    <article class="card"><div class="icon">◆</div><h3>Protección de bienes</h3><p>Cuidado de mercancías, industrias, casas y comercios.</p></article>
-    <article class="card"><div class="icon">◇</div><h3>Traslado seguro</h3><p>Transporte de valores, dinero o artículos de alto riesgo.</p></article>
-    <article class="card"><div class="icon">◉</div><h3>Guardas de seguridad</h3><p>Guardias intramuros, custodios, escoltas, operadores de monitoreo, binomios caninos (K9) y elementos tácticos.</p></article>
-  </div>
-</section>
-
-<section id="camaras" class="section media-section">
-  <div class="media-copy">
-    <p class="eyebrow">SISTEMAS TECNOLÓGICOS</p>
-    <h2>Vigilancia que trabaja contigo.</h2>
-    <p>Ofrecemos sistemas de cámaras de seguridad para proyectos de vigilancia. Contamos con más de 6 años como proveedores de cámaras de seguridad en Tehuacán, Puebla.</p>
-    <a class="btn btn-primary" href="#contacto">Hablar con nosotros</a>
-  </div>
-  <div class="image-stack">
-    <img src="assets/imagen-01.png" alt="Equipo y servicios Espartanos" loading="lazy">
-    
-  </div>
-</section>
-
-<section id="tactico" class="section dark-section">
-  <div class="section-heading">
-    <p class="eyebrow">CATÁLOGO</p>
-    <h2>Equipo táctico</h2>
-    <p>Productos de alta calidad, protección balística y tecnología avanzada para apoyar la seguridad y eficiencia de fuerzas de seguridad, cuerpos policiales y protección civil.</p>
-  </div>
-  <div class="gallery" id="gallery">
-    
-<img src="assets/imagen-04.jpeg" alt="Equipo y servicios Espartanos" loading="lazy">
-<img src="assets/imagen-05.jpeg" alt="Equipo y servicios Espartanos" loading="lazy">
-<img src="assets/imagen-06.jpeg" alt="Equipo y servicios Espartanos" loading="lazy">
-<img src="assets/imagen-07.jpeg" alt="Equipo y servicios Espartanos" loading="lazy">
-<img src="assets/imagen-08.jpeg" alt="Equipo y servicios Espartanos" loading="lazy">
-<img src="assets/imagen-09.jpeg" alt="Equipo y servicios Espartanos" loading="lazy">
-<img src="assets/imagen-10.jpeg" alt="Equipo y servicios Espartanos" loading="lazy">
-<img src="assets/imagen-11.jpeg" alt="Equipo y servicios Espartanos" loading="lazy">
-<img src="assets/imagen-12.jpeg" alt="Equipo y servicios Espartanos" loading="lazy">
-<img src="assets/imagen-13.jpeg" alt="Equipo y servicios Espartanos" loading="lazy">
-<img src="assets/imagen-14.jpeg" alt="Equipo y servicios Espartanos" loading="lazy">
-<img src="assets/imagen-15.jpeg" alt="Equipo y servicios Espartanos" loading="lazy">
-<img src="assets/imagen-16.jpeg" alt="Equipo y servicios Espartanos" loading="lazy">
-<img src="assets/imagen-17.jpeg" alt="Equipo y servicios Espartanos" loading="lazy">
-<img src="assets/imagen-18.jpeg" alt="Equipo y servicios Espartanos" loading="lazy">
-<img src="assets/imagen-19.jpeg" alt="Equipo y servicios Espartanos" loading="lazy">
-<img src="assets/imagen-20.jpeg" alt="Equipo y servicios Espartanos" loading="lazy">
-<img src="assets/imagen-21.jpeg" alt="Equipo y servicios Espartanos" loading="lazy">
-<img src="assets/imagen-22.jpeg" alt="Equipo y servicios Espartanos" loading="lazy">
-<img src="assets/imagen-23.jpeg" alt="Equipo y servicios Espartanos" loading="lazy">
-<img src="assets/imagen-24.jpeg" alt="Equipo y servicios Espartanos" loading="lazy">
-<img src="assets/imagen-25.jpeg" alt="Equipo y servicios Espartanos" loading="lazy">
-<img src="assets/imagen-26.jpeg" alt="Equipo y servicios Espartanos" loading="lazy">
-<img src="assets/imagen-27.jpeg" alt="Equipo y servicios Espartanos" loading="lazy">
-<img src="assets/imagen-28.jpeg" alt="Equipo y servicios Espartanos" loading="lazy">
-<img src="assets/imagen-29.jpeg" alt="Equipo y servicios Espartanos" loading="lazy">
-<img src="assets/imagen-30.jpeg" alt="Equipo y servicios Espartanos" loading="lazy">
-<img src="assets/imagen-31.jpeg" alt="Equipo y servicios Espartanos" loading="lazy">
-<img src="assets/imagen-32.jpeg" alt="Equipo y servicios Espartanos" loading="lazy">
-<img src="assets/imagen-33.jpeg" alt="Equipo y servicios Espartanos" loading="lazy">
-<img src="assets/imagen-34.jpeg" alt="Equipo y servicios Espartanos" loading="lazy">
-<img src="assets/imagen-35.jpeg" alt="Equipo y servicios Espartanos" loading="lazy">
-<img src="assets/imagen-36.jpeg" alt="Equipo y servicios Espartanos" loading="lazy">
-<img src="assets/imagen-37.jpeg" alt="Equipo y servicios Espartanos" loading="lazy">
-<img src="assets/imagen-38.jpeg" alt="Equipo y servicios Espartanos" loading="lazy">
-<img src="assets/imagen-39.jpeg" alt="Equipo y servicios Espartanos" loading="lazy">
-<img src="assets/imagen-40.jpeg" alt="Equipo y servicios Espartanos" loading="lazy">
-<img src="assets/imagen-41.jpeg" alt="Equipo y servicios Espartanos" loading="lazy">
-<img src="assets/imagen-42.jpeg" alt="Equipo y servicios Espartanos" loading="lazy">
-<img src="assets/imagen-43.jpeg" alt="Equipo y servicios Espartanos" loading="lazy">
-<img src="assets/imagen-44.jpeg" alt="Equipo y servicios Espartanos" loading="lazy">
-<img src="assets/imagen-45.jpeg" alt="Equipo y servicios Espartanos" loading="lazy">
-  </div>
-</section>
-
-<section id="contacto" class="contact">
-  <div>
-    <p class="eyebrow">CONTACTO</p>
-    <h2>Hablemos de tu proyecto.</h2>
-    <p>Estamos en Tehuacán, Puebla.</p>
-  </div>
-
-  <div class="contact-details">
-    <a href="tel:2381642617">238-164-2617</a>
-    <a href="tel:2382424902">238-242-4902</a>
-    <p>20 de Nov. 811, Aquiles Serdán,<br>Tehuacán, 75750, Pue., México</p>
-
-  </div>
-
-<div>
-<p><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3784.3412916315806!2d-97.40504882480963!3d18.46819368261529!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85c5bd99c16a6b37%3A0x24bf3f8bc06374dc!2sESPARTANOS%20Proteger%20y%20Servir!5e0!3m2!1ses!2smx!4v1787115642642!5m2!1ses!2smx" 
-              width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe></p>
-
-</div>
-
-</section>
-
-</main>
-
-
-
-
-
-
-<footer><span>ESPARTANOS</span> · Proteger y Servir <span>© <span id="year"></span></span></footer>
-<script src="script.js"></script>
-</body>
-</html>
+<div id="scannerModal" class="modal hidden"><div class="dialog"><h2>📷 Escanear código</h2><p id="scannerHelp" class="hint">Apunta la cámara al código de barras.</p><div class="scannerBox"><video id="scannerVideo" autoplay playsinline muted></video><div class="scannerLine"></div></div><button id="stopScanner">Cancelar</button></div></div>
+<div id="timeAlert" class="modal hidden"><div class="dialog timeAlertDialog"><h2>🔔 TIEMPO TERMINADO</h2><p id="timeAlertText"></p><button id="dismissTimeAlert" class="primary">Entendido</button></div></div>
+<div id="accountPickerModal" class="modal hidden"><div class="dialog"><h2>🧾 Elegir cuenta abierta</h2><p class="hint">Selecciona la cuenta donde deseas agregar este consumo.</p><div id="accountPickerList"></div><button id="cancelAccountPicker">Cancelar</button></div></div>
+<div id="creditModal" class="modal hidden"><div class="dialog"><h2 id="creditTitle">Movimiento de crédito</h2><p id="creditBalance"></p><label>Tipo<select id="creditType"><option value="cargo">Cargo</option><option value="abono">Abono</option></select></label><label>Concepto<input id="creditConcept" placeholder="Ej. Copias, papelería, abono"></label><label>Importe<input id="creditAmount" type="number" min="0.01" step="0.01"></label><button id="saveCreditMovement" class="primary">Guardar movimiento</button><button id="cancelCreditMovement">Cancelar</button></div></div>
+<footer>INTERPOLH · Versión 7 de prueba · Datos guardados localmente en este navegador</footer><script src="app.js"></script></body></html>
